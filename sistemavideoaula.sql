@@ -4,7 +4,7 @@
 
 CREATE TABLE IF NOT EXISTS public.estados
 (
-    id_estado integer NOT NULL DEFAULT nextval('estados_id_estado_seq'::regclass),
+    id_estado integer,
     nome_estado character varying(50) COLLATE pg_catalog."default",
     siga_estado character varying(2) COLLATE pg_catalog."default",
     CONSTRAINT pk_estado PRIMARY KEY (id_estado)
@@ -23,7 +23,7 @@ ALTER TABLE public.estados
 
 CREATE TABLE IF NOT EXISTS public.cidades
 (
-    id_cidade integer NOT NULL DEFAULT nextval('cidades_id_cidade_seq'::regclass),
+    id_cidade integer,
     nome_cidade character varying(50) COLLATE pg_catalog."default",
     id_estado integer,
     CONSTRAINT pk_cidade PRIMARY KEY (id_cidade),
@@ -46,7 +46,7 @@ ALTER TABLE public.cidades
 
 CREATE TABLE IF NOT EXISTS public.bairros
 (
-    id_bairro integer NOT NULL DEFAULT nextval('bairros_id_bairro_seq'::regclass),
+    id_bairro integer,
     nome_bairro character varying(50) COLLATE pg_catalog."default",
     id_cidade integer,
     CONSTRAINT pk_bairro PRIMARY KEY (id_bairro),
@@ -69,7 +69,7 @@ ALTER TABLE public.bairros
 
 CREATE TABLE IF NOT EXISTS public.clientes
 (
-    id_cliente integer NOT NULL DEFAULT nextval('clientes_id_cliente_seq'::regclass),
+    id_cliente integer,
     nome_cliente character varying(50) COLLATE pg_catalog."default",
     endereco_cliente character varying(50) COLLATE pg_catalog."default",
     rg_cliente character varying(12) COLLATE pg_catalog."default",
@@ -99,7 +99,7 @@ ALTER TABLE public.clientes
 
 CREATE TABLE IF NOT EXISTS public.fornecedores
 (
-    id_fornecedor integer NOT NULL DEFAULT nextval('fornecedores_id_fornecedor_seq'::regclass),
+    id_fornecedor integer ,
     nome_fornecedor character varying(50) COLLATE pg_catalog."default",
     enderco_fornecedor character varying(50) COLLATE pg_catalog."default",
     id_cidade integer,
@@ -128,7 +128,7 @@ ALTER TABLE public.fornecedores
 
 CREATE TABLE IF NOT EXISTS public.itens_tel_forn
 (
-    id_tel integer NOT NULL DEFAULT nextval('itens_tel_forn_id_tel_seq'::regclass)
+    id_tel integer
 )
 
 TABLESPACE pg_default;
@@ -142,7 +142,7 @@ ALTER TABLE public.itens_tel_forn
 
 CREATE TABLE IF NOT EXISTS public.produtos
 (
-    id_produto integer NOT NULL DEFAULT nextval('produtos_id_produto_seq'::regclass),
+    id_produto integer,
     nome_produto character varying(30) COLLATE pg_catalog."default",
     preco_compra numeric,
     preco_venda numeric,
@@ -167,7 +167,7 @@ ALTER TABLE public.produtos
 
 CREATE TABLE IF NOT EXISTS public.telefone
 (
-    id_tel integer NOT NULL DEFAULT nextval('telefone_id_tel_seq'::regclass),
+    id_tel integer,
     numero_tel character varying(15) COLLATE pg_catalog."default",
     CONSTRAINT telefone_pkey PRIMARY KEY (id_tel)
 )
@@ -184,7 +184,7 @@ ALTER TABLE public.telefone
 
 CREATE TABLE IF NOT EXISTS public.vendas
 (
-    id_venda integer NOT NULL DEFAULT nextval('vendas_id_venda_seq'::regclass),
+    id_venda integer,
     data_venda character varying(10) COLLATE pg_catalog."default",
     valor_venda numeric,
     id_cliente integer,

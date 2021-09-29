@@ -28,10 +28,20 @@ public class ConectaBanco {
             System.setProperty("jdbc.driver", driver);
             conn = DriverManager.getConnection(caminho, usuario, senha);
             if(conn != null){
-                JOptionPane.showMessageDialog(null, "banco de dados conectado com sucesso.");
+                JOptionPane.showMessageDialog(null, "Banco de dados conectado com sucesso.");
             }
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Erro ao conectar ao banco de dados");
+            JOptionPane.showMessageDialog(null, "Erro ao conectar ao banco de dados! \n Erro: "+ e.getMessage());
+            System.exit(0);
         }
+    }
+    
+    public void desconecta(){
+        try {
+            conn.close();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao fechar a conexão!\n Erro: "+ex.getMessage());
+        }
+            
     }
 }
