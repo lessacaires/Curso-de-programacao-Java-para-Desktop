@@ -161,6 +161,7 @@ public class FrmEstado extends javax.swing.JFrame {
         txtLimpar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblEstado = new javax.swing.JTable();
+        btnAdicionar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -200,14 +201,18 @@ public class FrmEstado extends javax.swing.JFrame {
 
         jLabel4.setText("* Sigla:");
 
+        txtNome.setEnabled(false);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
             }
         });
 
+        txtSigla.setEnabled(false);
+
         btnEstadoSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/videoprojeto/icones/Save as.png"))); // NOI18N
         btnEstadoSalvar.setToolTipText("Salvar");
+        btnEstadoSalvar.setEnabled(false);
         btnEstadoSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEstadoSalvarActionPerformed(evt);
@@ -216,6 +221,7 @@ public class FrmEstado extends javax.swing.JFrame {
 
         btnEstadoEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/videoprojeto/icones/Edit page.png"))); // NOI18N
         btnEstadoEditar.setToolTipText("Alterar");
+        btnEstadoEditar.setEnabled(false);
         btnEstadoEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEstadoEditarActionPerformed(evt);
@@ -224,6 +230,7 @@ public class FrmEstado extends javax.swing.JFrame {
 
         btnEstadoExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/videoprojeto/icones/Delete.png"))); // NOI18N
         btnEstadoExcluir.setToolTipText("Excluir");
+        btnEstadoExcluir.setEnabled(false);
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/videoprojeto/icones/Exit.png"))); // NOI18N
         btnSair.setToolTipText("Sair");
@@ -236,11 +243,18 @@ public class FrmEstado extends javax.swing.JFrame {
         jLabel5.setText("Id:");
 
         txtCodigo.setEditable(false);
+        txtCodigo.setEnabled(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setText("Pesquisa:");
 
+        txtConsulta.setEnabled(false);
+        txtConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtConsultaMouseClicked(evt);
+            }
+        });
         txtConsulta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtConsultaKeyReleased(evt);
@@ -270,6 +284,7 @@ public class FrmEstado extends javax.swing.JFrame {
 
         txtLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/videoprojeto/icones/Clear.png"))); // NOI18N
         txtLimpar.setToolTipText("LImpas Campos");
+        txtLimpar.setEnabled(false);
         txtLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLimparActionPerformed(evt);
@@ -287,12 +302,21 @@ public class FrmEstado extends javax.swing.JFrame {
                 "id", "nome", "sigla"
             }
         ));
+        tblEstado.setEnabled(false);
         tblEstado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblEstadoMouseClicked(evt);
             }
         });
         jScrollPane4.setViewportView(tblEstado);
+
+        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/videoprojeto/icones/Add_32x32.png"))); // NOI18N
+        btnAdicionar.setToolTipText("Inserir novo");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -301,11 +325,6 @@ public class FrmEstado extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE))
-                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -315,6 +334,22 @@ public class FrmEstado extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtNome)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnAdicionar)
+                                .addGap(18, 18, 18)
                                 .addComponent(txtLimpar)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnEstadoSalvar)
@@ -324,17 +359,8 @@ public class FrmEstado extends javax.swing.JFrame {
                                 .addComponent(btnEstadoExcluir)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSair)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtNome)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -353,15 +379,20 @@ public class FrmEstado extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(txtNome)
                     .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(33, 33, 33)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnEstadoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEstadoExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEstadoSalvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSair))
-                    .addComponent(txtLimpar))
-                .addGap(21, 21, 21))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnEstadoEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
+                                .addComponent(btnEstadoExcluir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnEstadoSalvar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnSair))
+                            .addComponent(txtLimpar))
+                        .addGap(19, 19, 19))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnAdicionar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -378,12 +409,12 @@ public class FrmEstado extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(jLabel1)
-                        .addGap(53, 53, 53)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,6 +468,18 @@ public class FrmEstado extends javax.swing.JFrame {
         consultar();
     }//GEN-LAST:event_txtConsultaKeyReleased
 
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        // Habilita os campos
+        txtNome.setEnabled(true);
+        txtSigla.setEnabled(true);
+        tblEstado.setEnabled(true);
+    }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void txtConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConsultaMouseClicked
+        // TODO add your handling code here:
+        txtConsulta.setEnabled(true);
+    }//GEN-LAST:event_txtConsultaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -473,6 +516,7 @@ public class FrmEstado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton btnEstadoEditar;
     private javax.swing.JButton btnEstadoExcluir;
     private javax.swing.JButton btnEstadoSalvar;

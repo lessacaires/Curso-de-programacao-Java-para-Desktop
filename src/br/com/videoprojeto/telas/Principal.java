@@ -132,8 +132,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu5MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        FrmEstado frmEstado = new FrmEstado();
-        frmEstado.setVisible(true);
+        FrmEstado frm = new FrmEstado();
+        frm.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
